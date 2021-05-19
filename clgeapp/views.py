@@ -27,15 +27,6 @@ class CollegeDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-# class UserList(generics.ListAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
-#
-#
-# class UserDetail(generics.RetrieveAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
-
 
 class RoleViewSet(viewsets.ModelViewSet):
     queryset = Role.objects.all()
@@ -121,13 +112,12 @@ class MarkViewSet(viewsets.ModelViewSet):
 class RankViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Marks.objects.all()
     serializer_class = RankSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly, IsStudentUser]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsStudentUser]
 
     def get_queryset(self):
         return Marks.objects.filter(student__user=self.request.user)
 
 
-# @permission_classes([permissions.IsAuthenticatedOrReadOnly, IsAdminUser, IsOwnerOrReadOnly])
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({

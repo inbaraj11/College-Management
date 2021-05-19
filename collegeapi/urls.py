@@ -40,12 +40,8 @@ urlpatterns = [
     path('', views.api_root),
     path('college/', views.CollegeList.as_view()),
     path('college/<int:pk>/', views.CollegeDetail.as_view()),
-    # path('user/', views.UserList.as_view()),
-    # path('user/<int:pk>/', views.UserDetail.as_view()),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
 ]
 
-
-# urlpatterns = format_suffix_patterns(urlpatterns)

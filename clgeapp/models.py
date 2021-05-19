@@ -146,20 +146,3 @@ class Marks(BaseModel):
     def __str__(self):
         return f'{self.student}'
 
-#
-# class GPA(BaseModel):
-#     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='students_gpa')
-#     marks = models.ManyToManyField(Marks)
-#     gpa = models.FloatField()
-#
-#     def __str__(self):
-#         return f'{self.gpa}', self.student
-#
-#
-# class CGPA(BaseModel):
-#     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='students_cgpa')
-#     gpa = models.ManyToManyField(GPA)
-#     cgpa = models.FloatField()
-#
-#     def __str__(self):
-#         return f'{self.cgpa}'
